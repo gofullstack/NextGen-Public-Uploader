@@ -109,7 +109,7 @@ class UploaderNggAdmin extends nggAdmin {
 		if ( 0 == $galleryID ) {
 			$galleryID = get_option( 'npu_default_gallery' );
 			if ( empty( $galleryID ) ) {
-				self::show_error( esc_html__( 'No gallery selected.', 'nextgen-public-uploader' ) );
+				self::show_error( esc_html__( 'No gallery selected.', 'nextgen-uploader' ) );
 				return;
 			}
 		}
@@ -117,7 +117,7 @@ class UploaderNggAdmin extends nggAdmin {
 		// Get the Gallery.
 		$gallery = $gallery_mapper->find( $galleryID );
 		if ( ! $gallery->path ) {
-			self::show_error( esc_html__('Failure in database, no gallery path set.', 'nextgen-public-uploader' ) );
+			self::show_error( esc_html__('Failure in database, no gallery path set.', 'nextgen-uploader' ) );
 			return;
 		}
 
@@ -144,7 +144,7 @@ class UploaderNggAdmin extends nggAdmin {
 					} else {
 						unlink( $_FILES[ $key ]['tmp_name'] );
 						$error_msg = sprintf(
-							__( '<strong>%s</strong> is not a valid file.', 'nextgen-public-uploader' ),
+							__( '<strong>%s</strong> is not a valid file.', 'nextgen-uploader' ),
 							$_FILES[ $key ]['name']
 						);
 						self::show_error( $error_msg );

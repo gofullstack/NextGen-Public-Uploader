@@ -1,30 +1,12 @@
 <?php
 /*
-Plugin Name: NextGEN Public Uploader
-Plugin URI: http://webdevstudios.com/plugin/nextgen-public-uploader/
-Description: NextGEN Public Uploader is an extension to NextGEN Gallery which allows frontend image uploads for your users.
-Version: 1.9
+Plugin Name: NextGEN  Uploader
+Plugin URI: https://github.com/gofullstack/nextgen-uploader
+Description: NextGEN Uploader is an extension to NextGEN Gallery which allows frontend image uploads for your users.
+Version: 2.0
 
-Author: WebDevStudios
-Author URI: http://webdevstudios.com
-Text Domain: nextgen-public-uploader
-Domain Path: /languages
-
-Copyright 2009-2013 WebDevStudios  (email: contact@webdevstudios.com)
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+Author: Fullstack
+Text Domain: nextgen-uploader
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -71,7 +53,7 @@ class NGGallery_Public_uploader {
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
 		// Lets let everyone be able to read it, regardless of dialect.
-		load_plugin_textdomain( 'nextgen-public-uploader', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'nextgen-uploader', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		// We need NextGen Gallery to work.
 		add_action( 'admin_notices', array( $this, 'maybe_disable_plugin' ) );
@@ -118,7 +100,7 @@ class NGGallery_Public_uploader {
 			echo '<div id="message" class="error">';
 			echo '<p>';
 			echo sprintf(
-				esc_html__( '%s NextGEN Public Uploader %s requires NextGEN Gallery in order to work. Please deactivate NextGEN Public Uploader or activate %s NextGEN Gallery %s', 'nextgen-public-uploader' ),
+				esc_html__( '%s Nextgen Uploader %s requires NextGEN Gallery in order to work. Please deactivate Nextgen Uploader or activate %s NextGEN Gallery %s', 'nextgen-uploader' ),
 				'<p><strong>',
 				'</strong>',
 				'<a href="' . admin_url( '/plugin-install.php?tab=plugin-information&plugin=nextgen-gallery&TB_iframe=true&width=600&height=550' ) . '" target="_blank" class="thickbox onclick">',
@@ -142,7 +124,6 @@ class NGGallery_Public_uploader {
 
 		if ( $this->meets_requirements() ) {
 			require_once( dirname (__FILE__) . '/inc/npu-upload.php');
-			require_once( dirname (__FILE__) . '/tinymce/tinymce.php' );
 		}
 
 	}
@@ -161,11 +142,11 @@ class NGGallery_Public_uploader {
 				update_option( 'npu_image_description_select', 'Enabled' );
 				update_option( 'npu_description_text', '' );
 				update_option( 'npu_notification_email', get_option( 'admin_email' ) );
-				update_option( 'npu_upload_button', esc_html__( 'Upload', 'nextgen-public-uploader' ) );
-				update_option( 'npu_no_file', esc_html__( 'No file selected.', 'nextgen-public-uploader' ) );
-				update_option( 'npu_notlogged', esc_html__( 'You are not authorized to upload an image.', 'nextgen-public-uploader' ) );
-				update_option( 'npu_upload_success', esc_html__( 'Your image has been successfully uploaded.', 'nextgen-public-uploader' ) );
-				update_option( 'npu_upload_failed', esc_html__( 'Your upload failed. Please try again.', 'nextgen-public-uploader' ) );
+				update_option( 'npu_upload_button', esc_html__( 'Upload', 'nextgen-uploader' ) );
+				update_option( 'npu_no_file', esc_html__( 'No file selected.', 'nextgen-uploader' ) );
+				update_option( 'npu_notlogged', esc_html__( 'You are not authorized to upload an image.', 'nextgen-uploader' ) );
+				update_option( 'npu_upload_success', esc_html__( 'Your image has been successfully uploaded.', 'nextgen-uploader' ) );
+				update_option( 'npu_upload_failed', esc_html__( 'Your upload failed. Please try again.', 'nextgen-uploader' ) );
 			}
 		}
 
@@ -182,17 +163,17 @@ class NGGallery_Public_uploader {
 		/*
 		 add_submenu_page(
 			'nextgen-gallery',
-			__( 'NextGEN Public Uploader', 'nextgen-public-uploader' ),
-			__( 'Public Uploader', 'nextgen-public-uploader' ),
+			__( 'Nextgen Uploader', 'nextgen-uploader' ),
+			__( 'Public Uploader', 'nextgen-uploader' ),
 			'manage_options',
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			array( $this, 'options_page' )
 		);*/
 		add_menu_page(
-			esc_html__( 'NextGEN Public Uploader', 'nextgen-public-uploader' ),
-			esc_html__( 'NextGEN Public Uploader', 'nextgen-public-uploader' ),
+			esc_html__( 'Nextgen Uploader', 'nextgen-uploader' ),
+			esc_html__( 'Nextgen Uploader', 'nextgen-uploader' ),
 			'manage_options',
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			array( $this, 'options_page' )
 		);
 
@@ -207,10 +188,10 @@ class NGGallery_Public_uploader {
 	 */
 	public function options_page() { ?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'NextGEN Public Uploader', 'nextgen-public-uploader' ); ?></h1>
+			<h1><?php esc_html_e( 'Nextgen Uploader', 'nextgen-uploader' ); ?></h1>
 
 			<?php if ( isset( $_GET['settings-updated'] ) ) { ?>
-				<div class="updated"><p><?php esc_html_e( 'Settings saved.', 'nextgen-public-uploader' ); ?></p></div>
+				<div class="updated"><p><?php esc_html_e( 'Settings saved.', 'nextgen-uploader' ); ?></p></div>
 			<?php
 			} ?>
 
@@ -220,7 +201,7 @@ class NGGallery_Public_uploader {
 
 				<?php
 					settings_fields( 'npu_settings' );
-					do_settings_sections( 'nextgen-public-uploader' );
+					do_settings_sections( 'nextgen-uploader' );
 					submit_button();
 				?>
 
@@ -238,7 +219,7 @@ class NGGallery_Public_uploader {
 	public function plugin_settings() {
 
 		// Register our settings section.
-		add_settings_section( 'npu_settings', esc_html__( 'Settings', 'nextgen-public-uploader' ), array( $this, 'settings_description' ), 'nextgen-public-uploader' );
+		add_settings_section( 'npu_settings', esc_html__( 'Settings', 'nextgen-uploader' ), array( $this, 'settings_description' ), 'nextgen-uploader' );
 
 		// Register all our settings.
 		register_setting( 'npu_settings', 'npu_default_gallery', array( $this, 'settings_sanitization' ) );
@@ -264,141 +245,141 @@ class NGGallery_Public_uploader {
 		}
 
 		$role_options = apply_filters( 'npu_plugin_roles', array(
-			'99' => esc_html__( 'Visitor', 'nextgen-public-uploader' ),
-			'0'  => esc_html__( 'Subscriber', 'nextgen-public-uploader' ),
-			'1'  => esc_html__( 'Contributor', 'nextgen-public-uploader' ),
-			'2'  => esc_html__( 'Author', 'nextgen-public-uploader' ),
-			'7'  => esc_html__( 'Editor', 'nextgen-public-uploader' ),
-			'10' => esc_html__( 'Admin', 'nextgen-public-uploader' )
+			'99' => esc_html__( 'Visitor', 'nextgen-uploader' ),
+			'0'  => esc_html__( 'Subscriber', 'nextgen-uploader' ),
+			'1'  => esc_html__( 'Contributor', 'nextgen-uploader' ),
+			'2'  => esc_html__( 'Author', 'nextgen-uploader' ),
+			'7'  => esc_html__( 'Editor', 'nextgen-uploader' ),
+			'10' => esc_html__( 'Admin', 'nextgen-uploader' )
 		) );
 
 		// Add our settings fields.
 		add_settings_field(
 			'npu_default_gallery',
-			esc_html__( 'Default Gallery:', 'nextgen-public-uploader' ),
+			esc_html__( 'Default Gallery:', 'nextgen-uploader' ),
 			array( $this, 'settings_select' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_default_gallery',
-				'description' => sprintf( esc_html__( 'The default gallery ID when using %s with no ID specified.', 'nextgen-public-uploader' ),
+				'description' => sprintf( esc_html__( 'The default gallery ID when using %s with no ID specified.', 'nextgen-uploader' ),
 				'<code>[ngg_uploader]</code>' ),
 				'options' => $gallery_options
 			)
 		);
 		add_settings_field(
 			'npu_user_role_select',
-			esc_html__( 'Minimum User Role:', 'nextgen-public-uploader' ),
+			esc_html__( 'Minimum User Role:', 'nextgen-uploader' ),
 			array( $this, 'settings_select' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_user_role_select',
-				'description' => esc_html__( 'The minimum user role required for image uploading.', 'nextgen-public-uploader' ),
+				'description' => esc_html__( 'The minimum user role required for image uploading.', 'nextgen-uploader' ),
 				'options' => $role_options
 			)
 		);
 		add_settings_field(
 			'npu_exclude_select',
-			esc_html__( 'Uploads Require Approval:', 'nextgen-public-uploader' ),
+			esc_html__( 'Uploads Require Approval:', 'nextgen-uploader' ),
 			array( $this, 'settings_checkbox' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_exclude_select',
 				'description' => '',
-				'value' => esc_attr__( 'Enabled', 'nextgen-public-uploader' ),
-				'label' => esc_html__( 'Exclude images from appearing in galleries until they have been approved.', 'nextgen-public-uploader' )
+				'value' => esc_attr__( 'Enabled', 'nextgen-uploader' ),
+				'label' => esc_html__( 'Exclude images from appearing in galleries until they have been approved.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_image_description_select',
-			esc_html__( 'Show Description Field:', 'nextgen-public-uploader' ),
+			esc_html__( 'Show Description Field:', 'nextgen-uploader' ),
 			array( $this, 'settings_checkbox' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_image_description_select',
 				'description' => '',
-				'value' => esc_attr__( 'Enabled', 'nextgen-public-uploader' ),
-				'label' => esc_html__( 'Enable the Image Description text field.', 'nextgen-public-uploader' )
+				'value' => esc_attr__( 'Enabled', 'nextgen-uploader' ),
+				'label' => esc_html__( 'Enable the Image Description text field.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_description_text',
-			esc_html__( 'Image Description Label:', 'nextgen-public-uploader' ),
+			esc_html__( 'Image Description Label:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_description_text',
-				'description' => esc_html__( 'Default label shown for the image description textbox.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Default label shown for the image description textbox.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_notification_email',
-			esc_html__( 'Notification Email:', 'nextgen-public-uploader' ),
+			esc_html__( 'Notification Email:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_notification_email',
-				'description' => esc_html__( 'The email address to be notified when a image has been submitted.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'The email address to be notified when a image has been submitted.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_upload_button',
-			esc_html__( 'Upload Button Text:', 'nextgen-public-uploader' ),
+			esc_html__( 'Upload Button Text:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_upload_button',
-				'description' => esc_html__( 'Custom text for upload button.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Custom text for upload button.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_no_file',
-			esc_html__( 'No File Selected Warning:', 'nextgen-public-uploader' ),
+			esc_html__( 'No File Selected Warning:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_no_file',
-				'description' => esc_html__( 'Warning displayed when no file has been selected for upload.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Warning displayed when no file has been selected for upload.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_notlogged',
-			esc_html__( 'Unauthorized Warning:', 'nextgen-public-uploader' ),
+			esc_html__( 'Unauthorized Warning:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_notlogged',
-				'description' => esc_html__( 'Warning displayed when a user does not have permission to upload.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Warning displayed when a user does not have permission to upload.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_upload_success',
-			esc_html__( 'Upload Success Message:', 'nextgen-public-uploader' ),
+			esc_html__( 'Upload Success Message:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_upload_success',
-				'description' => esc_html__( 'Message displayed when an image has been successfully uploaded.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Message displayed when an image has been successfully uploaded.', 'nextgen-uploader' )
 			)
 		);
 		add_settings_field(
 			'npu_upload_failed',
-			esc_html__( 'Upload Failed Message:', 'nextgen-public-uploader' ),
+			esc_html__( 'Upload Failed Message:', 'nextgen-uploader' ),
 			array( $this, 'settings_text' ),
-			'nextgen-public-uploader',
+			'nextgen-uploader',
 			'npu_settings',
 			array(
 				'ID' => 'npu_upload_failed',
-				'description' => esc_html__( 'Message displayed when an image failed to upload.', 'nextgen-public-uploader' )
+				'description' => esc_html__( 'Message displayed when an image failed to upload.', 'nextgen-uploader' )
 			)
 		);
 	}
@@ -409,7 +390,7 @@ class NGGallery_Public_uploader {
 	 * @since unknown
 	 */
 	public function settings_description() {
-		echo '<p>' . esc_html__( 'Edit the settings below to control the default behaviors of this plugin. Shortcode example(s) available at the bottom of the page.', 'nextgen-public-uploader' ) . '</p>';
+		echo '<p>' . esc_html__( 'Edit the settings below to control the default behaviors of this plugin. Shortcode example(s) available at the bottom of the page.', 'nextgen-uploader' ) . '</p>';
 	}
 
 	/**
@@ -485,7 +466,7 @@ class NGGallery_Public_uploader {
 	public function filter_plugin_actions( $links ) {
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'admin.php?page=nextgen-public-uploader' ) . '">' . esc_html__( 'Settings', 'nextgen-public-uploader' ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'admin.php?page=nextgen-uploader' ) . '">' . esc_html__( 'Settings', 'nextgen-uploader' ) . '</a>'
 			),
 			$links
 		);
@@ -497,8 +478,8 @@ class NGGallery_Public_uploader {
 	 * @since unknown
 	 */
 	public function shortcodes() { ?>
-		<h2><?php esc_html_e( 'Shortcode Examples', 'nextgen-public-uploader' ) ?></h2>
-		<p><?php printf( esc_html__( 'To insert the public uploader into any content area, use %s or %s, where %s is the ID of the corresponding gallery.', 'nextgen-public-uploader' ), '<code>[ngg_uploader]</code>', '<code>[ngg_uploader id="1"]</code>', '<strong>1</strong>' ); ?></p>
+		<h2><?php esc_html_e( 'Shortcode Examples', 'nextgen-uploader' ) ?></h2>
+		<p><?php printf( esc_html__( 'To insert the public uploader into any content area, use %s or %s, where %s is the ID of the corresponding gallery.', 'nextgen-uploader' ), '<code>[ngg_uploader]</code>', '<code>[ngg_uploader id="1"]</code>', '<strong>1</strong>' ); ?></p>
 
 		<?php do_action( 'npu_shortcodes' ); ?>
 	<?php
@@ -511,11 +492,11 @@ class NGGallery_Public_uploader {
 	 */
 	public function footer_text() { ?>
 		<p>
-			<strong><?php esc_html_e('Current Version', 'nextgen-public-uploader') ?>:</strong> <?php $plugin_data = get_plugin_data( __FILE__, false ); echo $plugin_data['Version']; ?> |
+			<strong><?php esc_html_e('Current Version', 'nextgen-uploader') ?>:</strong> <?php $plugin_data = get_plugin_data( __FILE__, false ); echo $plugin_data['Version']; ?> |
 			<a href="http://webdevstudios.com">WebDevStudios.com</a> |
-			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3084056"><?php _e('Donate', 'nextgen-public-uploader' ) ?></a> |
-			<a href="http://wordpress.org/plugins/nextgen-public-uploader/"><?php _e('Plugin Homepage', 'nextgen-public-uploader' ) ?></a> |
-			<a href="http://wordpress.org/support/plugin/nextgen-public-uploader/"><?php _e('Support Forum', 'nextgen-public-uploader' ) ?></a>
+			<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3084056"><?php _e('Donate', 'nextgen-uploader' ) ?></a> |
+			<a href="http://wordpress.org/plugins/nextgen-uploader/"><?php _e('Plugin Homepage', 'nextgen-uploader' ) ?></a> |
+			<a href="http://wordpress.org/support/plugin/nextgen-uploader/"><?php _e('Support Forum', 'nextgen-uploader' ) ?></a>
 		</p>
 	<?php
 	}

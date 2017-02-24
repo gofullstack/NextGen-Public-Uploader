@@ -54,9 +54,9 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 					'operation'  => '',
 					'nonce'      => wp_create_nonce( 'ngg-ajax' ),
 					'ids'        => '',
-					'permission' => esc_html__( 'You do not have the correct permission', 'nextgen-public-uploader' ),
-					'error'      => esc_html__( 'Unexpected Error', 'nextgen-public-uploader' ),
-					'failure'    => esc_html__( 'Upload Failed', 'nextgen-public-uploader' ),
+					'permission' => esc_html__( 'You do not have the correct permission', 'nextgen-uploader' ),
+					'error'      => esc_html__( 'Unexpected Error', 'nextgen-uploader' ),
+					'failure'    => esc_html__( 'Upload Failed', 'nextgen-uploader' ),
 				)
 			);
 			wp_register_script( 'ngg-progressbar', NGGALLERY_URLPATH . 'admin/js/ngg.progressbar.js', array( 'jquery' ), '1.0.0' );
@@ -129,7 +129,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 				if( !empty( $notlogged ) ) {
 					$strOutput .= $notlogged;
 				} else {
-					$strOutput .= esc_html__( 'You must be registered and logged in to upload images.', 'nextgen-public-uploader' );
+					$strOutput .= esc_html__( 'You must be registered and logged in to upload images.', 'nextgen-uploader' );
 				}
 				$strOutput .= '</div>';
 			} else {
@@ -191,7 +191,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 			$strOutput = '';
 
 			if ( 'Enabled' == get_option( 'npu_image_description_select' ) ) {
-				$strOutput .= '<br />' . get_option( 'npu_description_text',  __( 'Description:', 'nextgen-public-uploader' ) ) . '<br />';
+				$strOutput .= '<br />' . get_option( 'npu_description_text',  __( 'Description:', 'nextgen-uploader' ) ) . '<br />';
 
 				$name = is_numeric( $i ) ? 'imagedescription_' . $i : 'imagedescription';
 
@@ -212,6 +212,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 
 			if ( isset( $_POST['uploadimage'] ) ) {
 				check_admin_referer( 'ngg_addgallery' );
+
 				if ( !isset( $_FILES['MF__F_0_0']['error'] ) || $_FILES['MF__F_0_0']['error'] == 0 ) {
 					$objUploaderNggAdmin = new UploaderNggAdmin();
 					$objUploaderNggAdmin->upload_images();
@@ -219,19 +220,13 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 					$this->arrImageIds = $objUploaderNggAdmin->arrImageIds;
 					$this->strGalleryPath = $objUploaderNggAdmin->strGalleryPath;
 					$this->arrImageNames = $objUploaderNggAdmin->arrImageNames;
+
 					if ( is_array( $objUploaderNggAdmin->arrThumbReturn ) && count( $objUploaderNggAdmin->arrThumbReturn ) > 0 ) {
 						foreach ( $objUploaderNggAdmin->arrThumbReturn as $strReturnMsg ) {
 							if ( $strReturnMsg != '1' ) {
 								$this->arrErrorMsg[] = $strReturnMsg;
 							}
 						}
-
-						if ( get_option( 'npu_upload_success' ) ) {
-							$this->arrImageMsg[] = get_option( 'npu_upload_success' );
-						} else {
-							$this->arrImageMsg[] = esc_html__( 'Thank you! Your image has been submitted and is pending review.', 'nextgen-public-uploader' );
-						}
-						$this->sendEmail();
 					}
 					if ( is_array( $this->arrImageIds ) && count( $this->arrImageIds ) > 0 ) {
 						foreach ( $this->arrImageIds as $imageId ) {
@@ -243,11 +238,21 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 							$this->strTimeStamp   = $objEXIF->get_date_time();
 							// What are we doing with this stuff? It's just reassigning, unless there's only ever 1 index in the array.
 						}
+
+
+						if ( get_option( 'npu_upload_success' ) ) {
+							$this->arrImageMsg[] = get_option( 'npu_upload_success' );
+						} else {
+							$this->arrImageMsg[] = esc_html__( 'Thank you! Your image has been submitted and is pending review.', 'nextgen-uploader' );
+						}
+
+						$this->sendEmail();
+
 					} else {
 						if ( get_option( 'npu_no_file' ) ) {
 							$this->arrErrorMsg[] = get_option( 'npu_no_file' );
 						} else {
-							$this->arrErrorMsg[] = esc_html__( 'You must select a file to upload', 'nextgen-public-uploader' );
+							$this->arrErrorMsg[] = esc_html__( 'You must select a file to upload', 'nextgen-uploader' );
 						}
 					}
 					$this->update_details();
@@ -255,7 +260,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 					if ( get_option( 'npu_upload_failed' ) ) {
 						$this->arrErrorMsg[] = get_option( 'npu_upload_failed' );
 					} else {
-						$this->arrErrorMsg[] = esc_html__( 'Upload failed!', 'nextgen-public-uploader' );
+						$this->arrErrorMsg[] = esc_html__( 'Upload failed!', 'nextgen-uploader' );
 					}
 				}
 				if ( count( $this->arrErrorMsg ) > 0 && ( is_array( $this->arrImageIds ) && count( $this->arrImageIds ) > 0 ) ) {
@@ -346,8 +351,8 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 			if ( get_option( 'npu_notification_email' ) ) {
 
 				$to      = apply_filters( 'npu_gallery_upload_send_email_to'     , get_option( 'npu_notification_email' ), $this );
-				$subject = apply_filters( 'npu_gallery_upload_send_email_subject', esc_html__( 'New Image Pending Review - NextGEN Public Uploader', 'nextgen-public-uploader' ), $this );
-				$message = apply_filters( 'npu_gallery_upload_send_email_message', esc_html__( 'A new image has been submitted and is waiting to be reviewed.', 'nextgen-public-uploader' ), $this );
+				$subject = apply_filters( 'npu_gallery_upload_send_email_subject', esc_html__( 'New Image Pending Review - Nextgen Uploader', 'nextgen-uploader' ), $this );
+				$message = apply_filters( 'npu_gallery_upload_send_email_message', esc_html__( 'A new image has been submitted and is waiting to be reviewed.', 'nextgen-uploader' ), $this );
 
 				wp_mail( $to, $subject, $message );
 			}
@@ -389,7 +394,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 				if( get_option( 'npu_notlogged' ) ) {
 					$output .= get_option( 'npu_notlogged' );
 				} else {
-					$output .= esc_html__( 'You must be registered and logged in to upload images.', 'nextgen-public-uploader' );
+					$output .= esc_html__( 'You must be registered and logged in to upload images.', 'nextgen-uploader' );
 				}
 				$output .= '</div>';
 			} else {
@@ -413,7 +418,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 					if ( 'Enabled' == get_option( 'npu_image_description_select' ) ) {
 						$output .= '<label for="imagedescription">';
 
-						$output .= ( get_option( 'npu_description_text' ) ) ? get_option( 'npu_description_text' ) : __( 'Description:', 'nextgen-public-uploader' );
+						$output .= ( get_option( 'npu_description_text' ) ) ? get_option( 'npu_description_text' ) : __( 'Description:', 'nextgen-uploader' );
 
 						$output .= '</label>';
 						$output .= '<input type="text" name="imagedescription" id="imagedescription"/>';
@@ -422,7 +427,7 @@ if ( ! class_exists( 'npuGalleryUpload' ) ) {
 					$output .= apply_filters( 'npu_gallery_upload_display_uploader_before_submit', '', $this, 'widget' );
 
 					// Set up our submit value text.
-					$submit = ( get_option( 'npu_upload_button' ) ) ? get_option( 'npu_upload_button' ) : __( 'Upload', 'nextgen-public-uploader' );
+					$submit = ( get_option( 'npu_upload_button' ) ) ? get_option( 'npu_upload_button' ) : __( 'Upload', 'nextgen-uploader' );
 
 					$output .= '<div class="submit"><input class="button-primary" type="submit" name="uploadimage" id="uploadimage_btn" value="' . $submit . '" /></div></form></div>';
 				}
@@ -461,10 +466,10 @@ class NextGenPublicUploader extends WP_Widget {
 	 */
 	function __construct() {
 		$widget_ops = array(
-            'description'   => esc_html__( 'Upload images to a NextGEN Gallery', 'nextgen-public-uploader' ),
+            'description'   => esc_html__( 'Upload images to a NextGEN Gallery', 'nextgen-uploader' ),
             'classname'     => 'npu_gallery_upload',
 		);
-		parent::__construct( 'next-gen-public-uploader-widget', esc_html__( 'NextGEN Uploader', 'nextgen-public-uploader' ), $widget_ops );
+		parent::__construct( 'next-gen-public-uploader-widget', esc_html__( 'NextGEN Uploader', 'nextgen-uploader' ), $widget_ops );
 	}
 
 	/**
@@ -509,13 +514,13 @@ class NextGenPublicUploader extends WP_Widget {
 		$gallerylist = $mapper->find_all();
 		?>
 
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'nextgen-public-uploader' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'nextgen-uploader' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'gal_id' ); ?>"><?php esc_html_e( 'Upload to :', 'nextgen-public-uploader' ); ?></label>
+		<label for="<?php echo $this->get_field_id( 'gal_id' ); ?>"><?php esc_html_e( 'Upload to :', 'nextgen-uploader' ); ?></label>
 		<select id="<?php echo $this->get_field_id( 'gal_id' ) ?>" name="<?php echo $this->get_field_name( 'gal_id' ); ?>">
-			<option value="0"><?php esc_html_e( 'Choose gallery', 'nextgen-public-uploader' ); ?></option>
+			<option value="0"><?php esc_html_e( 'Choose gallery', 'nextgen-uploader' ); ?></option>
 			<?php
 			foreach( $gallerylist as $gallery ) {
 				$name = ( empty( $gallery->title ) ) ? $gallery->name : $gallery->title;

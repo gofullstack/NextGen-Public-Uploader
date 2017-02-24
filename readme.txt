@@ -1,20 +1,20 @@
-=== NextGEN Public Uploader ===
+=== Nextgen Uploader ===
 Contributors: WDS-Scott, williamsba1, pluginize, webdevstudios, tw2113, JustinSainton
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3084056
-Tags: nextgen public uploader,nextgen uploader,nextgen gallery,nextgen,gallery,image,upload,photo,picture,visitor,public,uploader
+Tags: Nextgen Uploader,nextgen uploader,nextgen gallery,nextgen,gallery,image,upload,photo,picture,visitor,public,uploader
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.9
 
-NextGEN Public Uploader is an extension to NextGEN Gallery which allows frontend image uploads for your users.
+Nextgen Uploader is an extension to NextGEN Gallery which allows frontend image uploads for your users.
 
 == Description ==
 
-The NextGEN Public Uploader plugin for WordPress allows users to upload images from the frontend of your website to a specified gallery in NextGEN. Upon upload the submitted image is marked as "excluded" and an email notification will be sent letting you know an image is waiting to be reviewed.
+The Nextgen Uploader plugin for WordPress allows users to upload images from the frontend of your website to a specified gallery in NextGEN. Upon upload the submitted image is marked as "excluded" and an email notification will be sent letting you know an image is waiting to be reviewed.
 
 REMEMBER: Always backup your database!
 
-= NextGEN Public Uploader is an extension of NextGEN Gallery =
+= Nextgen Uploader is an extension of NextGEN Gallery =
 
 [NextGEN Gallery](http://wordpress.org/extend/plugins/nextgen-gallery/ "NextGEN Gallery")
 
@@ -38,17 +38,17 @@ Special thanks to Patrick McCoy for his help.
 
 == Installation ==
 
-1. Upload the nextgen-public-uploader folder to the plugins directory in your WordPress or WPMU installation.
+1. Upload the nextgen-uploader folder to the plugins directory in your WordPress or WPMU installation.
 
-2. Activate NextGEN Public Uploader.
+2. Activate Nextgen Uploader.
 
-3. Drag the NextGEN Public Uploader widget to the desired sidebar or use the shortcode in your pages/posts.
+3. Drag the Nextgen Uploader widget to the desired sidebar or use the shortcode in your pages/posts.
 
 View the plugin settings page for shortcode examples.
 
 = For More Information Visit =
 
-[NextGEN Public Uploader Homepage](http://webdevstudios.com/support/wordpress-plugins/nextgen-public-uploader/ "NextGEN Public Uploader")
+[Nextgen Uploader Homepage](http://webdevstudios.com/support/wordpress-plugins/nextgen-uploader/ "Nextgen Uploader")
 
 REMEMBER: This plugin requires NextGEN Gallery in order to work.
 
@@ -63,13 +63,13 @@ No, this plugin requires NextGEN Gallery in order to work.
 
 = Why am I getting the following error? =
 
-"NextGEN Public Uploader requires NextGEN gallery in order to work. Please deactivate this plugin or activate NextGEN Gallery."
+"Nextgen Uploader requires NextGEN gallery in order to work. Please deactivate this plugin or activate NextGEN Gallery."
 
 If you have installed NextGEN Gallery, please make sure that it is activated.
 
-= Still Need Help? Please visit the NextGEN Public Uploader Support Forum =
+= Still Need Help? Please visit the Nextgen Uploader Support Forum =
 
-[NextGEN Public Uploader Support](http://wordpress.org/support/plugin/nextgen-public-uploader)
+[Nextgen Uploader Support](http://wordpress.org/support/plugin/nextgen-uploader)
 
 == Changelog ==
 
@@ -130,15 +130,15 @@ If you have installed NextGEN Gallery, please make sure that it is activated.
 * Fixed: SVN repository
 
 = V1.0 - 10.5.2009 =
-* NextGEN Public Uploader is launched
+* Nextgen Uploader is launched
 
 == License ==
 
-NextGEN Public Uploader is distributed under an open source license called the GNU General Public License, or GPL. The text of the license is distributed with every copy of this plugin.
+Nextgen Uploader is distributed under an open source license called the GNU General Public License, or GPL. The text of the license is distributed with every copy of this plugin.
 
 == Upgrade Notice ==
 
 * Completely different widget registration method in version 1.8. If you use the Widget uploader, you'll probably want to re-add and re-set the gallery.
 * Translators. We switched to a new text-domain to align with the WordPress 3.7 translation changes. We also provided a pot file to use.
 
-Before upgrading NextGEN Public Uploader please remember to backup your database and files.
+Before upgrading Nextgen Uploader please remember to backup your database and files.

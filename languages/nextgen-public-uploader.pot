@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: NextGEN Public Uploader\n"
+"Project-Id-Version: Nextgen Uploader\n"
 "POT-Creation-Date: 2013-11-14 12:59-0600\n"
 "PO-Revision-Date: 2013-11-14 12:59-0600\n"
 "Last-Translator: \n"
@@ -14,209 +14,209 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../nextgen-public-uploader.php:43
+#: ../nextgen-uploader.php:43
 #, php-format
 msgid ""
-"%s NextGEN Public Uploader %s requires NextGEN Gallery in order to work. "
-"Please deactivate NextGEN Public Uploader or activate %s NextGEN Gallery %s"
+"%s Nextgen Uploader %s requires NextGEN Gallery in order to work. "
+"Please deactivate Nextgen Uploader or activate %s NextGEN Gallery %s"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:69 ../inc/npu-upload.php:371
+#: ../nextgen-uploader.php:69 ../inc/npu-upload.php:371
 msgid "Upload"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:70
+#: ../nextgen-uploader.php:70
 msgid "No file selected."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:71
+#: ../nextgen-uploader.php:71
 msgid "You are not authorized to upload an image."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:72
+#: ../nextgen-uploader.php:72
 msgid "Your image has been successfully uploaded."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:73
+#: ../nextgen-uploader.php:73
 msgid "Your upload failed. Please try again."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:92
+#: ../nextgen-uploader.php:92
 #, php-format
 msgid ""
-"%s NextGEN Public Uploader %s by %s WordPress Website Design and Development "
+"%s Nextgen Uploader %s by %s WordPress Website Design and Development "
 "%s"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:105 ../nextgen-public-uploader.php:238
-msgid "NextGEN Public Uploader"
+#: ../nextgen-uploader.php:105 ../nextgen-uploader.php:238
+msgid "Nextgen Uploader"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:106
+#: ../nextgen-uploader.php:106
 msgid "Public Uploader"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:118
+#: ../nextgen-uploader.php:118
 msgid "Settings"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:129
+#: ../nextgen-uploader.php:129
 msgid "Plugin Settings"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:157
+#: ../nextgen-uploader.php:157
 msgid "Visitor"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:158
+#: ../nextgen-uploader.php:158
 msgid "Subscriber"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:159
+#: ../nextgen-uploader.php:159
 msgid "Contributor"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:160
+#: ../nextgen-uploader.php:160
 msgid "Author"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:161
+#: ../nextgen-uploader.php:161
 msgid "Editor"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:162
+#: ../nextgen-uploader.php:162
 msgid "Admin"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:166
+#: ../nextgen-uploader.php:166
 msgid "Default Gallery:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:166
+#: ../nextgen-uploader.php:166
 #, php-format
 msgid "The default gallery ID when using %s with no ID specified."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:167
+#: ../nextgen-uploader.php:167
 msgid "Minimum User Role:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:167
+#: ../nextgen-uploader.php:167
 msgid "The minimum user role required for image uploading."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:168
+#: ../nextgen-uploader.php:168
 msgid "Uploads Require Approval:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:168
+#: ../nextgen-uploader.php:168
 msgid ""
 "Exclude images from appearing in galleries until they have been approved."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:169
+#: ../nextgen-uploader.php:169
 msgid "Show Description Field:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:169
+#: ../nextgen-uploader.php:169
 msgid "Enable the Image Description text field."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:170
+#: ../nextgen-uploader.php:170
 msgid "Image Description Label:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:170
+#: ../nextgen-uploader.php:170
 msgid "Default label shown for the image description textbox."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:171
+#: ../nextgen-uploader.php:171
 msgid "Notification Email:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:171
+#: ../nextgen-uploader.php:171
 msgid "The email address to be notified when a image has been submitted."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:172
+#: ../nextgen-uploader.php:172
 msgid "Upload Button Text:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:172
+#: ../nextgen-uploader.php:172
 msgid "Custom text for upload button."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:173
+#: ../nextgen-uploader.php:173
 msgid "No File Selected Warning:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:173
+#: ../nextgen-uploader.php:173
 msgid "Warning displayed when no file has been selected for upload."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:174
+#: ../nextgen-uploader.php:174
 msgid "Unauthorized Warning:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:174
+#: ../nextgen-uploader.php:174
 msgid "Warning displayed when a user does not have permission to upload."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:175
+#: ../nextgen-uploader.php:175
 msgid "Upload Success Message:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:175
+#: ../nextgen-uploader.php:175
 msgid "Message displayed when an image has been successfully uploaded."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:176
+#: ../nextgen-uploader.php:176
 msgid "Upload Failed Message:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:176
+#: ../nextgen-uploader.php:176
 msgid "Message displayed when an image failed to upload."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:177
+#: ../nextgen-uploader.php:177
 msgid "Link Love:"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:177
+#: ../nextgen-uploader.php:177
 msgid ""
 "Display link to this plugin in your site's footer (because you love us!)"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:183
+#: ../nextgen-uploader.php:183
 msgid ""
 "Edit the settings below to control the default behaviors of this plugin."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:240
+#: ../nextgen-uploader.php:240
 msgid "Settings saved."
 msgstr ""
 
-#: ../nextgen-public-uploader.php:243
+#: ../nextgen-uploader.php:243
 msgid "Current Version"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:245
+#: ../nextgen-uploader.php:245
 msgid "Donate"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:246
+#: ../nextgen-uploader.php:246
 msgid "Plugin Homepage"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:247
+#: ../nextgen-uploader.php:247
 msgid "Support Forum"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:250
+#: ../nextgen-uploader.php:250
 msgid "Shortcode Examples"
 msgstr ""
 
-#: ../nextgen-public-uploader.php:251
+#: ../nextgen-uploader.php:251
 #, php-format
 msgid ""
 "To insert the public uploader into any content area, use %s or %s, where %s "
@@ -282,7 +282,7 @@ msgid "Upload failed!"
 msgstr ""
 
 #: ../inc/npu-upload.php:298
-msgid "New Image Pending Review - NextGEN Public Uploader"
+msgid "New Image Pending Review - Nextgen Uploader"
 msgstr ""
 
 #: ../inc/npu-upload.php:299
